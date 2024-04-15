@@ -12,8 +12,9 @@
   },
   "tauri": {
     "allowlist": {
-      "all": false
+      "all": true
     },
+    "macOSPrivateApi": true,
     "bundle": {
       "active": true,
       "category": "DeveloperTool",
@@ -55,6 +56,8 @@
     },
     "windows": [
       {
+        "transparent": true,
+        "titleBarStyle":"Overlay",
         "fullscreen": false,
         "height": 600,
         "resizable": true,
