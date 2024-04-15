@@ -1,3 +1,24 @@
+@font-face {
+    font-family: 'Product Sans Regular';
+    src: url('fonts/Product Sans Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Product Sans Thin';
+    src: url('fonts/Product Sans Thin.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: 'Product Sans Bold';
+    src: url('fonts/Product Sans Bold.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
