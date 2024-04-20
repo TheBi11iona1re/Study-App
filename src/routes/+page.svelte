@@ -1,4 +1,6 @@
 
+
+
 <head>
     <style>
       html,
@@ -8,11 +10,28 @@
     </style>
   </head>
 
-<h1 class="mt-[170px] text-center text-6xl ">Next Generation Study Tool</h1>
+  <div class="flex flex-col items-center h-screen">
+  
+    <div class="flex-grow"></div>
+  
+   
+    <div class="mb-5"> 
+      <h1 class="text-center text-6xl text-white">Next Generation Study Tool</h1>
+    </div>
+  
+    
+    <div class="flex justify-center items-center mb-10">
+      <button class="backdrop-blur-[0px] hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75">
+        Dashboard
+      </button>
+    </div>
+  
+   
+    <div class="flex-grow"></div>
+  </div>
+  
+  
+  
 
-
-  <button class="backdrop-blur-[0px] hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded ml-[350px] mt-5 backdrop-brightness-75">
-    Dashboard
-    </button>
 
   
