@@ -25,7 +25,7 @@
   
     
     <div class="flex justify-center items-center mb-10">
-      <button class="backdrop-blur-[0px] hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75"  on:click={() => goto('/login')}>
+      <button class="backdrop-blur-[0px] hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75"  on:click={() => goto('/dashboard')}>
         Dashboard
       </button>
     </div>

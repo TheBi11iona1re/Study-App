@@ -34,7 +34,9 @@
 	"dependencies": {
 		"@supabase/auth-helpers-sveltekit": "github:supabase/supabase-js",
 		"@supabase/supabase-js": "^2.42.5",
+		"@tauri-apps/api": "^1.5.3",
 		"clsx": "^2.1.0",
+		"svelte-ripple-action": "^1.0.6",
 		"tailwind-merge": "^2.2.2",
 		"tailwind-variants": "^0.2.1"
 	}
