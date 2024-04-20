@@ -110,7 +110,7 @@ window.addEventListener('resize', updateWidths);
         <div class="flex-grow"></div>
     </div>
 </div>
-<div in:fade={{ delay: 0, duration: 300 }} class="opaque-section">
+<div in:fade={{ delay: 0, duration: 200 }} class="opaque-section">
     <!-- Content for the opaque section -->
     <div class="flex flex-col items-center h-screen">
         <div class="flex-grow"></div>
