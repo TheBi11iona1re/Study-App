@@ -42,7 +42,7 @@
   </head>
 
   <div class="flex flex-col items-center justify-center h-screen">
-    <form on:submit|preventDefault={login} class="flex flex-col w-72 mx-auto p-5 shadow-xl backdrop-brightness-[.9]">
+    <form on:submit|preventDefault={login} class="flex flex-col w-72 mx-auto p-5 shadow-xl backdrop-brightness-[.9] rounded-lg">
         <h2 class="text-lg text-center mb-4 text-white font-bold">Login</h2>
         {#if errorMessage}
             <p class="text-red-500">{errorMessage}</p>
