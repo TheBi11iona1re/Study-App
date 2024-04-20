@@ -1,6 +1,8 @@
 <script>
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
+    import { fade } from 'svelte/transition';
+    import { blur } from 'svelte/transition';
 
     onMount(() => {
         // Update widths based on viewport size
@@ -93,7 +95,7 @@ window.addEventListener('resize', updateWidths);
 </style>
 
 
-<div class="transparent-section" data-tauri-drag-region>
+<div  class="transparent-section" data-tauri-drag-region>
     <!-- Content for the transparent section -->
     <div data-tauri-drag-region class="flex flex-col items-center h-screen">
         <div class="flex-grow"></div>
@@ -108,7 +110,7 @@ window.addEventListener('resize', updateWidths);
         <div class="flex-grow"></div>
     </div>
 </div>
-<div class="opaque-section">
+<div in:fade={{ delay: 0, duration: 300 }} class="opaque-section">
     <!-- Content for the opaque section -->
     <div class="flex flex-col items-center h-screen">
         <div class="flex-grow"></div>
