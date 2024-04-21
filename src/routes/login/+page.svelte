@@ -114,15 +114,15 @@
         <!-- Email Input with Enhanced Floating Label -->
         <div class="relative mt-4">
             <input type="email" bind:value={email} placeholder=" " required
-                class="peer my-2 py-2 px-2 border rounded bg-transparent text-gray-300 leading-tight focus:outline-none focus:border-gray-400">
+                class="peer my-3 py-2 px-2 border rounded bg-transparent text-gray-300 leading-tight focus:outline-none focus:border-gray-400">
             <label for="email" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-300 transition-all duration-300 ease-in-out pointer-events-none">
                 Email
             </label>
         </div>
         <!-- Password Input with Enhanced Floating Label -->
-        <div class="relative mt-2">
+        <div class="relative mt-1">
             <input type="password" bind:value={password} placeholder=" " required
-                class="peer my-2 py-2 px-2 border rounded bg-transparent text-gray-300 leading-tight focus:outline-none focus:border-gray-400">
+                class="peer my-3 py-2 px-2 border rounded bg-transparent text-gray-300 leading-tight focus:outline-none focus:border-gray-400">
             <label for="password" class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-300 transition-all duration-300 ease-in-out pointer-events-none">
                 Password
             </label>

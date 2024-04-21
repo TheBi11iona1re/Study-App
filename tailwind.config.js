@@ -15,6 +15,7 @@ const config = {
 		},
 		extend: {
 			colors: {
+				customGray: 'rgb(60,60,60)',
 				border: "hsl(var(--border) / <alpha-value>)",
 				input: "hsl(var(--input) / <alpha-value>)",
 				ring: "hsl(var(--ring) / <alpha-value>)",

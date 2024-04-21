@@ -79,10 +79,12 @@
         "transparent": true,
         "titleBarStyle": "Overlay",
         "fullscreen": false,
-        "height": 600,
+        "height": 650,
+        "minHeight": 400,
         "resizable": true,
-        "title": "Study App",
-        "width": 800
+        "title": "",
+        "minWidth": 450,
+        "width": 1200
       }
     ]
   }
