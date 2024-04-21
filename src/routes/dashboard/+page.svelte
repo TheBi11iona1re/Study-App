@@ -66,7 +66,7 @@ let opaqueWidth = '500px'; // Default width
     position: fixed;
     top: 0;
   right: 0;
-    box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.23);
 }
 
 .titlebar-divider {
@@ -78,7 +78,7 @@ let opaqueWidth = '500px'; // Default width
     height: .5px; /* Example height - adjust as needed */
     width: calc(100% - 233px); /* Remaining width */
     background-color: #444343; /* Gray color */
-    box-shadow: 1 1 10px rgba(0, 0, 0, 0.5); /* Bevel effect */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.23);
 }
 
 .divider {
