@@ -36,7 +36,7 @@
   
 
 
-  <div class="absolute top-0 h-20 w-full" data-tauri-drag-region>
+  <div class="absolute top-0 h-10 w-full" data-tauri-drag-region>
 
 
     

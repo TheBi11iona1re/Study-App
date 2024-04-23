@@ -1,3 +1,4 @@
+// src/lib/store/authStore.js
 import { writable } from 'svelte/store';
 import { createClient } from '@supabase/supabase-js';
 import type { Session } from '@supabase/supabase-js';
@@ -13,7 +14,6 @@ function createAuthStore() {
     return {
         subscribe,
         signIn: async (email: string, password: string) => {
-            // Update based on new API documentation
             const { data: session, error } = await supabase.auth.signInWithPassword({
                 email: email,
                 password: password,
@@ -21,6 +21,14 @@ function createAuthStore() {
             if (error) throw new Error(error.message);
             set(session);
             return session;
+        },
+        signUp: async (email: string, password: string) => {
+            const { user, error } = await supabase.auth.signUp({
+                email: email,
+                password: password,
+            });
+            if (error) throw new Error(error.message);
+            return { user, error };
         },
         signOut: async () => {
             const { error } = await supabase.auth.signOut();
