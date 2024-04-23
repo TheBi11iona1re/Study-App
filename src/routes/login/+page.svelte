@@ -112,7 +112,7 @@
                 registrationErrorMessage = result.error.message;
                 console.error('Registration error:', result.error);
             } else {
-                registrationSuccessMessage = "Registration successful! Click Log In.";
+                registrationSuccessMessage = "Registered Click Log In.";
                   // Modify this as per your flow
             }
         } catch (error) {
