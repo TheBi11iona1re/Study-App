@@ -59,6 +59,7 @@ const config = {
 				sans: ['Product Sans Regular',...fontFamily.sans],
 				'bold': ['Product Sans Bold', 'default-bold-fallback', 'sans-serif'],
 				'thin': ['Product Sans Thin', 'default-thin-fallback', 'sans-serif'],
+				'thin': ['Product Sans Thin', 'default-thin-fallback', 'sans-serif'],
 			}
 		}
 	},

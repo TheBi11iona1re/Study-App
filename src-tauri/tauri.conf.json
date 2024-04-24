@@ -7,7 +7,7 @@
     "distDir": "../build"
   },
   "package": {
-    "productName": "study-app",
+    "productName": "flashify",
     "version": "0.1.0"
   },
   "tauri": {
@@ -47,7 +47,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.studyapp",
+      "identifier": "com.tauri.flashify",
       "windows": {
         "certificateThumbprint": null,
         "digestAlgorithm": "sha256",
@@ -63,7 +63,9 @@
       "deb": {
         "depends": []
       },
-      "resources": [],
+      "resources": [
+       
+      ],
       "shortDescription": "",
       "longDescription": "",
       "targets": "all"

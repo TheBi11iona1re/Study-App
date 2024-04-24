@@ -123,6 +123,7 @@
 </script>
 
 
+
     <button  on:click={() => goto('/')} class=" ml-1 mt-10 arrow-button bg-transparent border-none cursor-pointer outline-none p-0 h-7 w-9 transition-all ease-in-out duration-0 hover:bg-customGray hover:rounded-lg text-white focus:outline-none">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="rgb(170,170,170)" class="w-[32px] h-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
@@ -130,7 +131,11 @@
         
     </button>
 
+  
+   
 
+
+     
     
     <div class="flex flex-col items-center justify-center min-h-screen mt-[-45px]">
         <form on:submit|preventDefault={login} class="flex flex-col w-72 mx-auto p-5 shadow-2xl bg-opacity-87 rounded-lg backdrop-filter backdrop-brightness-90">
