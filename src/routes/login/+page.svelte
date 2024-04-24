@@ -143,6 +143,7 @@
 
      
     
+    
     <div class="flex flex-col items-center justify-center min-h-screen mt-[-45px]">
         <form on:submit|preventDefault={login} class="flex flex-col w-72 mx-auto p-5 shadow-2xl bg-opacity-87 rounded-lg backdrop-filter backdrop-brightness-90">
             <h2 class="text-lg text-center mb-2 text-white font-bold">Login / Register</h2>

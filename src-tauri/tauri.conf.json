@@ -7,7 +7,7 @@
     "distDir": "../build"
   },
   "package": {
-    "productName": "flashify",
+    "productName": "Flashify",
     "version": "0.1.0"
   },
   "tauri": {
@@ -47,7 +47,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.flashify",
+      "identifier": "com.tauri.Flashify",
       "windows": {
         "certificateThumbprint": null,
         "digestAlgorithm": "sha256",
