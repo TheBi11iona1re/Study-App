@@ -123,14 +123,14 @@
 </script>
 
 <div style="display: flex; justify-content: center; align-items: center;">
-    <img src="https://asset.brandfetch.io/idXLgrPD24/idfMf2EB4z.svg?updated=1704985716168" alt="SVG Image" style="width: 17px; height: auto; ">
+    <img src="https://asset.brandfetch.io/idXLgrPD24/idfMf2EB4z.svg?updated=1704985716168" alt="SVG Image" style="width: 17px; height: auto; margin-right: 3px;">
     <h1 class="text-white mt-1 font-thin text-sm drop-shadow-xl text-center">Flashify.ai</h1>
-   
   </div>
   
   
+  
 
-    <button  on:click={() => goto('/')} class=" ml-1 mt-10 arrow-button bg-transparent border-none cursor-pointer outline-none p-0 h-7 w-9 transition-all ease-in-out duration-0 hover:bg-customGray hover:rounded-lg text-white focus:outline-none">
+    <button  on:click={() => goto('/')} class=" ml-1 mt-5 arrow-button bg-transparent border-none cursor-pointer outline-none p-0 h-7 w-9 transition-all ease-in-out duration-0 hover:bg-customGray hover:rounded-lg text-white focus:outline-none">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="rgb(170,170,170)" class="w-[32px] h-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
         </svg>
