@@ -44,16 +44,16 @@
     }
   }
   </style>
-
+ <div style="display: flex; justify-content: center; align-items: center;">
+  <img src="https://asset.brandfetch.io/idXLgrPD24/idfMf2EB4z.svg?updated=1704985716168" alt="SVG Image" style="width: 17px; height: auto; ">
+  <h1 class="text-white mt-1 font-thin text-sm drop-shadow-xl text-center">Flashify.ai</h1>
+ 
+</div>
   <div class="flex flex-col items-center h-screen mr-2">
    
 
 
-  <h1 class="text-white mt-1 font-thin text-sm">Flashify.ai</h1>
-  <div class="mr-20 mt-[-19px]">
-  <img src="https://asset.brandfetch.io/idXLgrPD24/idfMf2EB4z.svg?updated=1704985716168" alt="SVG Image" style="width: 17px; height: auto;">
-</div>
-
+   
     <div class="flex-grow"></div>
   
    
