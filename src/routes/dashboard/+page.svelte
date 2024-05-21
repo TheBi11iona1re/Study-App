@@ -1,12 +1,15 @@
-<script>
+<script lang="ts">
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
     import { fade } from 'svelte/transition';
     import { blur } from 'svelte/transition';
+    import { getContext } from 'svelte';
+    import { username } from '$lib/store/authStore';
+
 
     onMount(() => {
-        // Update widths based on viewport size
       
+
     });
 
     let transparentWidth = '100px'; // Default width
@@ -14,9 +17,15 @@ let opaqueWidth = '500px'; // Default width
 
 
 
+      
 
 
 </script>
+
+<div class="dashboard">
+   
+    <!-- Additional dashboard content can go here -->
+</div>
 
 <div class="absolute top-0 h-20 w-full" data-tauri-drag-region></div>
 <style>
@@ -97,7 +106,7 @@ let opaqueWidth = '500px'; // Default width
 
 </style>
 
-    
+
    
     <div class="titlebar-section" data-tauri-drag-region>
      
@@ -106,7 +115,7 @@ let opaqueWidth = '500px'; // Default width
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="rgb(170,170,170)" class="w-[32px] h-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
             </svg>
-            
+           
         </button>
         <h1 class="text-white text-center flex-grow mr-[60px] ">Dashboard</h1>
        
@@ -117,15 +126,29 @@ let opaqueWidth = '500px'; // Default width
 
 <div  class="sidebar-section" data-tauri-drag-region>
     <!-- Content for the transparent section -->
-    <div data-tauri-drag-region class="flex flex-col items-center h-screen">
-        <div class="flex-grow"></div>
+    <div data-tauri-drag-region class="flex flex-col items-center mt-14">
+      
         <div class="mb-5">
-            <h1 data-tauri-drag-region class="text-center text-2xl text-white ">Sidebar</h1>
+            <div style="display: flex; align-items: center; ">
+                <div style="display: flex; align-items: center; padding: 4px 8px;" class="ml-1 bg-transparent border-none cursor-pointer outline-none transition-all ease-in-out duration-0 hover:bg-customGray hover:rounded-lg text-white focus:outline-none">
+                  
+               
+                
+                <p data-tauri-drag-region class="text-center mr-[0px] text-white ">{$username}'s Flashify</p>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"  stroke-width="1.6" stroke="white" class="w-5 h-5 mb-1 bg-transparent border-none cursor-pointer outline-none p-1 h-[27px] w-[27px] ml-[5px] transition-all ease-in-out duration-0 hover:bg-customGray2 hover:rounded-lg text-white focus:outline-none">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                </svg>
+            </div>
+            </div>
+            
+            
         </div>
         <div class="flex justify-center items-center mb-10">
             <button   class="backdrop-blur-[0px] hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75" on:click={() => goto('/')}>
                 Home
+                
             </button>
+            
         </div>
         <div class="flex-grow"></div>
     </div>
@@ -135,7 +158,7 @@ let opaqueWidth = '500px'; // Default width
     <div class="flex flex-col items-center h-screen">
       <div class="flex-grow"></div>
       <div class="mb-5">
-        <h1 class="text-center text-2xl text-white mt-20">Main Content</h1>
+        <h1 class="text-center text-2xl text-white mt-20">Welcome, {$username}!</h1>
       </div>
       <div class="flex justify-center items-center mb-10">
      
@@ -160,5 +183,10 @@ let opaqueWidth = '500px'; // Default width
     </div>
   </div>
 
-
+  <template>
+    <div>
+      <h1>Welcome, {username}!</h1>
+      <!-- Rest of your dashboard code -->
+    </div>
+  </template>
 <div class="divider"></div>
