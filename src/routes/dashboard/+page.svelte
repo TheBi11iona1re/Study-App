@@ -126,22 +126,66 @@ let opaqueWidth = '500px'; // Default width
 
 <div  class="sidebar-section" data-tauri-drag-region>
     <!-- Content for the transparent section -->
-    <div data-tauri-drag-region class="flex flex-col items-center mt-14">
+    <div data-tauri-drag-region class="flex flex-col items-center mt-12">
       
         <div class="mb-5">
             <div style="display: flex; align-items: center; ">
-                <div style="display: flex; align-items: center; padding: 4px 8px;" class="ml-1 bg-transparent border-none cursor-pointer outline-none transition-all ease-in-out duration-0 hover:bg-customGray hover:rounded-lg text-white focus:outline-none">
+                <div style="display: flex; align-items: center; padding: 4px 8px;" class="ml-0 bg-transparent border-none cursor-pointer outline-none transition-all ease-in-out duration-0 hover:backdrop-brightness-75 hover:rounded-lg text-white focus:outline-none">
                   
                
                 
                 <p data-tauri-drag-region class="text-center mr-[0px] text-white ">{$username}'s Flashify</p>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"  stroke-width="1.6" stroke="white" class="w-5 h-5 mb-1 bg-transparent border-none cursor-pointer outline-none p-1 h-[27px] w-[27px] ml-[5px] transition-all ease-in-out duration-0 hover:bg-customGray2 hover:rounded-lg text-white focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"  stroke-width="1.6" stroke="white" class="w-5 h-5 mb-1 bg-transparent border-none cursor-pointer outline-none p-1 h-[27px] w-[30px] ml-[5px] transition-all ease-in-out duration-0 hover:bg-customGray2 hover:rounded-lg text-white focus:outline-none">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
                 </svg>
+               
+
             </div>
+
+            
+           
             </div>
-            
-            
+
+            <div style="display: flex; align-items: center; ">
+                <div style="display: flex; align-items: center; padding: 4px 8px;" class="ml-[-1px] bg-transparent border-none cursor-pointer outline-none transition-all ease-in-out duration-0 hover:backdrop-brightness-75 hover:rounded-lg text-white focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.3" stroke="white" class="w-5 h-5 mb-0 bg-transparent border-none cursor-pointer outline-none p-1 h-[27px] w-[27px] ml-[0px] ">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                      </svg>
+                   
+                      
+            <p data-tauri-drag-region class="font-thin text-center mr-[0px] text-white ">Search</p>
+          
+              
+        </div>
+            </div>
+            <div style="display: flex; align-items: center; ">
+                <div style="display: flex; align-items: center; padding: 4px 8px;" class="ml-[-1px] bg-transparent border-none cursor-pointer outline-none transition-all ease-in-out duration-0 hover:backdrop-brightness-75 hover:rounded-lg text-white focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.3" stroke="white" class="w-5 h-5 mb-0 bg-transparent border-none cursor-pointer outline-none p-1 h-[27px] w-[27px] ml-[0px] ">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                      </svg>
+            <p data-tauri-drag-region class="font-thin text-center mr-[0px] text-white ">Settings</p>
+          
+              
+        </div>
+    </div>
+
+
+    <div style="display: flex; align-items: center; ">
+        <div style="display: flex; align-items: center; padding: 4px 8px;" class="ml-[-1px] bg-transparent border-none cursor-pointer outline-none transition-all ease-in-out duration-0 hover:backdrop-brightness-75 hover:rounded-lg text-white focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.3" stroke="white" class="w-5 h-5 mb-0 bg-transparent border-none cursor-pointer outline-none p-1 h-[27px] w-[27px] ml-[0px] ">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0M3.124 7.5A8.969 8.969 0 0 1 5.292 3m13.416 0a8.969 8.969 0 0 1 2.168 4.5" />
+              </svg>
+
+           
+              
+           
+              
+    <p data-tauri-drag-region class="text-center mr-[0px] font-thin text-white ">Notifications</p>
+  
+      
+</div>
+    </div>
+    <p data-tauri-drag-region class="text-center mt-5 text-sm font-thin text-white ">{$username}'s Cards</p>
         </div>
         <div class="flex justify-center items-center mb-10">
             <button   class="backdrop-blur-[0px] hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75" on:click={() => goto('/')}>
