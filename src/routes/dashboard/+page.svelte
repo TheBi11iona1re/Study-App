@@ -4,6 +4,8 @@
     import { fade } from 'svelte/transition';
     import { username } from '$lib/store/authStore';
     import CardPage from '$lib/components/CardPage.svelte';
+    import { cardsStore } from '$lib/store/cardsStore';
+    import { get } from 'svelte/store';
 
     let showSearch = false;
     let showModal = false;
@@ -11,6 +13,7 @@
     let cards = [];
     let nextCardId = 1;
     let home = false;
+    let searchInput;
 
     function toggleModal() {
         showModal = !showModal;
@@ -20,14 +23,13 @@
         home = !home;
     }
 
-    let searchInput;
-
     function toggleSearch() {
         showSearch = !showSearch;
     }
 
     function addCard(type) {
-        cards = [...cards, { type, id: nextCardId++, content: '' }];
+        const newCard = { type, id: nextCardId++, content: '' };
+        cardsStore.update(cards => [...cards, newCard]);
         showModal = false; // Close the modal after adding a card
     }
 
@@ -35,12 +37,19 @@
         selectedCard = card;
     }
 
-  
     function updateCardContent(id, newContent) {
-        cards = cards.map(card => card.id === id ? { ...card, content: newContent } : card);
+        cardsStore.update(cards => 
+            cards.map(card => card.id === id ? { ...card, content: newContent } : card)
+        );
     }
 
     onMount(() => {
+        cards = get(cardsStore);
+
+        if (cards.length > 0) {
+            nextCardId = Math.max(...cards.map(card => card.id)) + 1;
+        }
+
         if (showSearch) {
             searchInput.focus();
         }
@@ -49,6 +58,10 @@
     $: if (showSearch) {
         searchInput?.focus();
     }
+
+    $: cardsStore.subscribe(value => {
+        cards = value;
+    });
 </script>
 
 <style>

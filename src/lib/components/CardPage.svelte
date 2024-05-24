@@ -9,6 +9,9 @@
         onSave(editableContent);
     }
 
+
+
+    
     // Timer related variables
     let timer = 0;
     let interval;
