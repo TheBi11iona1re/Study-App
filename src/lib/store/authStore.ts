@@ -2,7 +2,7 @@
 import { writable } from 'svelte/store';
 import { createClient } from '@supabase/supabase-js';
 import type { Session } from '@supabase/supabase-js';
-
+import { cardsStore, loadUserCards, clearCardsStore } from './cardsStore';
 
 export const username = writable('');
 
@@ -23,6 +23,8 @@ function createAuthStore() {
             });
             if (error) throw new Error(error.message);
             set(session);
+            username.set(session.user.email.split('@')[0]);
+            await loadUserCards(session.user.id);
             return session;
         },
         signUp: async (email: string, password: string) => {
@@ -37,6 +39,8 @@ function createAuthStore() {
             const { error } = await supabase.auth.signOut();
             if (error) throw new Error(error.message);
             set(null);
+            username.set('');
+            clearCardsStore();
         },
     };
 }

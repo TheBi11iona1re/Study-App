@@ -1,4 +1,8 @@
 <script lang="ts">
+    import { cardsStore, saveCardToSupabase } from '/Users/aditya/Study-App/src/lib/store/cardsStore';
+    import { auth } from '/Users/aditya/Study-App/src/lib/store/authStore';
+    import { get } from 'svelte/store';
+
     export let type: string;
     export let content: string;
     export let onSave: (newContent: string) => void;
@@ -7,11 +11,12 @@
 
     function saveContent() {
         onSave(editableContent);
+        const session = get(auth);
+        if (session) {
+            saveCardToSupabase({ user_id: session.user.id, type, content: editableContent });
+        }
     }
 
-
-
-    
     // Timer related variables
     let timer = 0;
     let interval;
@@ -84,7 +89,6 @@
     }
 
     .flashcard {
-        
         backdrop-filter: brightness(75%);
         border-radius: 8px;
         padding: 10px;

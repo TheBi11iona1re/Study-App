@@ -14,7 +14,7 @@
             }
         } catch (error) {
             errorMessage = error.message;
-            console.error('Login error:', error);
+            console.error('Login error:', err2or);
         }
     }
 </script>
