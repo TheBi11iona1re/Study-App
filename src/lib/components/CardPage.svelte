@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { cardsStore, saveCardToSupabase } from '/Users/aditya/Study-App/src/lib/store/cardsStore';
-    import { auth } from '/Users/aditya/Study-App/src/lib/store/authStore';
+    import { cardsStore, saveCardToSupabase } from '$lib/store/cardsStore';
+    import { auth } from '$lib/store/authStore';
     import { get } from 'svelte/store';
 
     export let type: string;
