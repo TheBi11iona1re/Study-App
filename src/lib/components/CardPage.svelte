@@ -105,14 +105,14 @@
                 class="bg-transparent w-full text-white border-b-2 border-white focus:outline-none"
                 on:keydown={(e) => e.key === 'Enter' && addTodo()}
             />
-            <button on:click={addTodo} class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Add</button>
+            <button on:click={addTodo} class="mt-2 px-4 py-2 bg-nord10 text-white rounded">Add</button>
             <ul class="mt-4">
                 {#each todos as todo, index}
                     <li class="flex justify-between items-center mt-2 text-white">
                         <span class:todo-item={true} class:completed={todo.completed} on:click={() => toggleTodoCompletion(index)}>
                             {todo.text}
                         </span>
-                        <button on:click={() => deleteTodo(index)} class="ml-2 px-2 py-1 bg-green-500 text-white rounded">Done</button>
+                        <button on:click={() => deleteTodo(index)} class="ml-2 px-2 py-1 bg-nord14 text-white rounded">Done</button>
                     </li>
                 {/each}
             </ul>
@@ -134,15 +134,15 @@
                 class="bg-transparent w-full text-white border-b-2 border-white focus:outline-none"
                 on:keydown={(e) => e.key === 'Enter' && addFlashcard()}
             />
-            <button on:click={addFlashcard} class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Add</button>
+            <button on:click={addFlashcard} class="mt-2 px-4 py-2 bg-bg-nord10 text-white rounded">Add</button>
             <div class="mt-4">
                 {#each flashcards as flashcard, index}
                     <div class="flashcard">
                         <div class="flex justify-between items-center">
                             <span>{flashcard.text}</span>
-                            <button on:click={() => deleteFlashcard(index)} class="ml-2 px-2 py-1 bg-red-500 text-white rounded">Delete</button>
+                            <button on:click={() => deleteFlashcard(index)} class="ml-2 px-2 py-1 bg-bg-nord11 text-white rounded">Delete</button>
                         </div>
-                    </div>
+                    </div> 
                 {/each}
             </div>
         </div>
@@ -152,9 +152,9 @@
         <div class="mt-10">
             <div>
                 <p class="text-white">Time: {Math.floor(timer / 60)}:{String(timer % 60).padStart(2, '0')}</p>
-                <button on:click={startTimer} class="mt-2 px-4 py-2 bg-blue-500 text-white rounded">Start</button>
-                <button on:click={stopTimer} class="mt-2 px-4 py-2 bg-red-500 text-white rounded">Stop</button>
-                <button on:click={resetTimer} class="mt-2 px-4 py-2 bg-gray-500 text-white rounded">Reset</button>
+                <button on:click={startTimer} class="mt-2 px-4 py-2 bg-nord10 text-white rounded">Start</button>
+                <button on:click={stopTimer} class="mt-2 px-4 py-2 bg-nord11 text-white rounded">Stop</button>
+                <button on:click={resetTimer} class="mt-2 px-4 py-2 bg-nord-2 text-white rounded">Reset</button>
             </div>
         </div>
     {/if}

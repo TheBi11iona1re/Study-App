@@ -190,6 +190,8 @@
     <h1 class="text-white text-center flex-grow mr-[60px]">Dashboard</h1>
 </div>
 
+
+
 <div class="titlebar-divider" data-tauri-drag-region></div>
 
 <div in:fade={{ delay: 0, duration: 200 }} class="opaque-section">
@@ -207,6 +209,7 @@
                 <h1 class="text-center text-2xl text-white mt-20">Welcome, {$username}!</h1>
             </div>
             <div class="flex justify-center items-center mb-10">
+               
                 <p class="text-white text-center ml-10 mr-10">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vitae posuere eros. Proin dictum ut quam quis ultricies. Integer et nunc ut quam porta lobortis vitae eget turpis. Praesent lacinia nunc metus, vel placerat neque varius at. Nam fringilla risus sed porttitor consequat. Sed rutrum vehicula sollicitudin. Pellentesque eget convallis erat. Ut volutpat elementum gravida. Aenean semper sit amet nulla sit amet iaculis. Vestibulum egestas feugiat enim, eget tempus lacus volutpat eu. Aenean bibendum dolor a commodo pretium. Sed venenatis eleifend ligula et semper. Curabitur pharetra sed elit eget pulvinar. Maecenas et hendrerit felis, in auctor ipsum. Proin laoreet enim at nunc facilisis, in eleifend lectus pretium. Fusce eget mauris a mi vulputate pharetra in vitae velit.
                     Vestibulum sollicitudin blandit lobortis. Integer malesuada placerat porttitor. Ut ultrices, metus id auctor ultrices, orci enim bibendum justo, eu sollicitudin dolor sem nec lectus. Cras at tempor leo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam venenatis urna ut nisl fringilla facilisis. Donec felis eros, sodales ut tempus vel, sodales id sapien. Morbi varius volutpat commodo. Nam in auctor metus. Mauris libero neque, vehicula et lobortis vel, luctus ac sapien. Nam libero sem, finibus vel velit ac, faucibus imperdiet felis. Nullam quis ullamcorper lorem, sit amet feugiat velit. Praesent porta nisl ante. Aenean tempus massa ultricies sollicitudin condimentum. In laoreet imperdiet mi, id convallis velit dignissim nec. Fusce at purus rutrum, sollicitudin justo nec, ullamcorper enim.
@@ -253,10 +256,10 @@
                             <div class="modal-bg" transition:fade={{ delay: 0, duration: 150 }} on:click={toggleModal}>
                                 <div class="modal-content" on:click|stopPropagation>
                                     <h2 class="text-xl font-semibold mb-4">New Card</h2>
-                                    <button class="px-5 py-1 bg-green-500 text-white rounded-xl font-thin hover:bg-green-600 text-sm" on:click={() => addCard('Todolist')}>Todolist</button>
-                                    <button class="px-5 py-1 bg-blue-500 text-white rounded-xl font-thin hover:bg-blue-600 text-sm" on:click={() => addCard('Document')}>Document</button>
-                                    <button class="px-5 py-1 bg-gray-500 text-white rounded-xl font-thin hover:bg-gray-600 text-sm" on:click={() => addCard('Flashcard Set')}>Flashcard Set</button>
-                                    <button class="px-5 py-1 bg-red-500 text-white rounded-xl font-thin hover:bg-red-600 text-sm" on:click={() => addCard('Timer')}>Timer</button>
+                                    <button class="px-5 py-1 bg-nord14 text-white rounded-xl font-thin hover:bg-nord14 text-sm" on:click={() => addCard('Todolist')}>Todolist</button>
+                                    <button class="px-5 py-1 bg-nord8 text-white rounded-xl font-thin hover:bg-nord10 text-sm" on:click={() => addCard('Document')}>Document</button>
+                                    <button class="px-5 py-1 bg-nord3 text-white rounded-xl font-thin hover:bg-nord2 text-sm" on:click={() => addCard('Flashcard Set')}>Flashcard Set</button>
+                                    <button class="px-5 py-1 bg-nord11 text-white rounded-xl font-thin hover:bg-nord16 text-sm" on:click={() => addCard('Timer')}>Timer</button>
                                     <p class="mb-3 mt-3">Add a new Todolist, Document, Flashcard Set, or Timer</p>
                                     <button class="backdrop-blur-[0px] hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75" on:click={toggleModal}>
                                         Close

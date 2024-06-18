@@ -34,20 +34,47 @@ body {
     }
     25% {
       background-image: linear-gradient(-45deg, 
-        rgb(255, 25, 25), 
-        rgb(255, 140, 0), 
-        rgb(50, 205, 50), 
-        rgb(30, 144, 255)
+        rgb(191, 97, 106), 
+        rgb( 208, 135, 112), 
+        rgb( 163, 190, 140), 
+        rgb(136, 192, 208)
       );
      
       background-clip: text;
       color: transparent;
     }
     50% {
+      
       background-image: none;
       color: white;
     }
   }
+
+
+  .glow-border {
+      position: relative;
+    }
+
+
+
+
+    .glow-border {
+      position: relative;
+      border-radius: 5px;
+    }
+
+    .glow-border:before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      bottom: -5px;
+      left: -5px;
+      right: -5px;
+      border: 5px solid rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      filter: blur(10px);
+      z-index: -1;
+    }
   </style>
 
 
@@ -115,4 +142,3 @@ body {
   
 
 
-  
