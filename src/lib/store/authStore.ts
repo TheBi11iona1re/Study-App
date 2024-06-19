@@ -9,7 +9,7 @@ export const username = writable('');
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
 function createAuthStore() {
     const { subscribe, set } = writable<Session | null>(null);

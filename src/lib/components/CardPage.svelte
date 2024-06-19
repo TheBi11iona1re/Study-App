@@ -147,7 +147,7 @@
 </style>
 
 <div class="page-content">
-    <h1>{type} Page</h1>
+    <h1>.</h1>
 
     {#if type === 'Todolist'}
         <div class="mt-10">
@@ -158,7 +158,7 @@
                 class="bg-transparent w-full text-2xl text-white border-b-2 border-white focus:outline-none"
                 on:keydown={(e) => e.key === 'Enter' && addTodo()}
             />
-            <button on:click={addTodo} class="mt-2 text-2xl px-4 py-2 bg-nord10 text-white rounded">Add</button>
+            <button on:click={addTodo} class="mt-2 text-xl px-4 py-2 bg-nord10 text-white rounded">Add</button>
             <ul class="mt-4">
                 {#each todos as todo, index}
                     <li class="flex justify-between items-center mt-2 text-white text-2xl">
@@ -171,7 +171,7 @@
             </ul>
         </div>
         <div class="flex justify-center">
-            <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded" on:click={saveContent}>Save</button>
+            <button class="hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75 py-3 px-6 rounded" on:click={saveContent}>Save</button>
         </div>
     {/if}
 
@@ -180,7 +180,7 @@
             <textarea bind:value={editableContent} class="bg-transparent w-full h-48 text-white"></textarea>
         </div>
         <div class="flex justify-center">
-            <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded" on:click={saveContent}>Save</button>
+            <button class="hover:backdrop-brightness-50  font-regular py-2 px-4 rounded backdrop-brightness-75 text-white py-3 px-6 rounded" on:click={saveContent}>Save</button>
         </div>
     {/if}
 
@@ -206,7 +206,7 @@
             </div>
 
             <div class="flex justify-center">
-                <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded" on:click={saveContent}>Save</button>
+                <button class="hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75 py-3 px-6 rounded" on:click={saveContent}>Save</button>
             </div>
         </div>
     {/if}
@@ -219,8 +219,8 @@
                 <div class="text-5xl md:text-7xl lg:text-9xl xl:text-[18rem] font-bold mb-6">{formatTime(timer)}</div>
                 <div class="flex space-x-4 mb-6">
                     <button class="bg-nord11 hover:bg-red-400 text-white font-bold py-3 px-6 rounded" on:click={startTimer}>Start</button>
-                    <button class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-3 px-6 rounded" on:click={stopTimer}>Pause</button>
-                    <button class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-3 px-6 rounded" on:click={resetTimer}>Reset</button>
+                    <button class="bg-nord-13 hover:bg-yellow-400 text-white font-bold py-3 px-6 rounded" on:click={stopTimer}>Pause</button>
+                    <button class="bg-nord9 hover:bg-blue-300 text-white font-bold py-3 px-6 rounded" on:click={resetTimer}>Reset</button>
                 </div>
             </div>
     
@@ -233,8 +233,8 @@
             </div>
     
             <h2 class="text-2xl font-semibold mb-4 text-center">Custom Timer</h2>
-            <div class="flex justify-center items-center space-x-4 mb-6">
-                <input type="number" min="1" class="w-24 p-3 rounded bg-gray-700 text-white text-center" placeholder="Minutes" bind:value={customMinutes} />
+            <div class="flex justify-center items-center space-x-4 mb-6 ">
+                <input type="number" min="1" class="w-24 p-3 rounded text-white text-center bg-transparent backdrop-brightness-50" placeholder="Minutes" bind:value={customMinutes} />
                 <button class="bg-nord14 hover:bg-green-400 text-white font-bold py-3 px-6 rounded" on:click={() => setTimer(customMinutes)}>Set Timer</button>
             </div>
             
@@ -246,7 +246,7 @@
             </div>
             
             <div class="flex justify-center">
-                <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded" on:click={saveContent}>Save</button>
+                <button class="hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75 text-white  py-3 px-6 rounded" on:click={saveContent}>Save</button>
             </div>
         </div>
     </div>

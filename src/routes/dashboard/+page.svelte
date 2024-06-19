@@ -4,9 +4,11 @@
     import { fade } from 'svelte/transition';
     import { username } from '$lib/store/authStore';
     import CardPage from '$lib/components/CardPage.svelte';
-    import { cardsStore, saveCardToSupabase } from '$lib/store/cardsStore';
+    import { cardsStore, saveCardToSupabase, deleteCardFromSupabase } from '$lib/store/cardsStore';
     import { get } from 'svelte/store';
-
+    import { auth } from '$lib/store/authStore';
+    let loadingBarClass = '';
+    let isLoading = false;
     let showSearch = false;
     let showModal = false;
     let selectedCard = null;
@@ -16,9 +18,14 @@
     let searchInput;
     let showSettings = false;
 
+    
     function toggleModal() {
         showModal = !showModal;
     }
+
+  
+
+
 
     function toggleSettings() {
         showSettings = !showSettings;
@@ -38,28 +45,78 @@
     function toggleSearch() {
         showSearch = !showSearch;
     }
+   
 
-    async function addCard(type) {
-        const user = get(username); // Get the user information
+
+
+    async function logout() {
+    try {
+        isLoading = true;
+        loadingBarClass = '';
+        await auth.signOut();
+        goto('/');
+    } catch (error) {
+        console.error('Error during logout:', error);
+    } finally {
+        loadingBarClass = 'finish';
+        setTimeout(() => { isLoading = false; }, 300);
+    }
+}
+
+
+async function addCard(type) {
+    try {
+        isLoading = true;
+        loadingBarClass = '';
+        const user = get(auth).user;
+        const existingCard = cards.find(card => card.type === type);
+        
+        if (existingCard) {
+            alert("Max amount of particular card reached");
+            isLoading = false;
+            return;
+        }
+
         const newCard = { type, id: nextCardId++, content: '', user_id: user.id };
 
+        // Save the new card to Supabase
         await saveCardToSupabase(newCard);
 
-        cardsStore.update(cards => {
-            const existingCardIndex = cards.findIndex(card => card.type === type);
-            if (existingCardIndex !== -1) {
-                alert("Max amount of particular card reached");
-                cards[existingCardIndex] = newCard;
-                return cards;
-                showModal = false; 
-            } else {
-                // Add the new card
-                return [...cards, newCard];
-            }
-        });
+        // Update the store with the new card
+        cardsStore.update(cards => [...cards, newCard]);
 
-        showModal = false; // Close the modal after adding a card
+    } catch (error) {
+        console.error('Error adding card:', error);
+    } finally {
+        loadingBarClass = 'finish';
+        setTimeout(() => { isLoading = false; showModal = false; }, 300); // Close the modal after adding a card
     }
+}
+
+
+
+async function deleteCard(cardId) {
+    try {
+        isLoading = true;
+        loadingBarClass = '';
+        cardsStore.update(cards => cards.filter(card => card.id !== cardId));
+        await deleteCardFromSupabase(cardId);
+        const user = get(auth).user;
+        await loadUserCards(user.id);
+    } catch (error) {
+        console.error('Error deleting card:', error);
+    } finally {
+        loadingBarClass = 'finish';
+        setTimeout(() => { isLoading = false; }, 300);
+    }
+}
+
+
+
+
+    $: cardsStore.subscribe(value => {
+        cards = value;
+    });
 
     function selectCard(card) {
         selectedCard = card;
@@ -163,6 +220,24 @@
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.23);
     }
 
+    .loading-bar {
+    position: absolute;
+    top: 0;
+    left: 0px; /* Adjust this to the width of your sidebar */
+    height: 2px;
+    background-color: rgba(216, 222, 226, 0.9);
+    width: 0; /* Start with 0 width */
+    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.loading-bar.finish {
+    width: 100%;
+    transition: width 0.1s ease-out; /* Fast finish transition */
+}
+
+
+
+
     .divider {
         z-index: 3;
         position: fixed;
@@ -225,6 +300,12 @@
 <div class="absolute top-0 h-20 w-full" data-tauri-drag-region></div>
 
 <div class="titlebar-section" data-tauri-drag-region>
+    {#if isLoading}
+    
+
+    <div class="loading-bar {loadingBarClass}"></div>
+{/if}
+
     <button on:click={() => goto('/')} class=" ml-2 arrow-button bg-transparent border-none cursor-pointer outline-none p-0 h-7 w-9 transition-all ease-in-out duration-0 hover:bg-customGray hover:rounded-lg text-white focus:outline-none">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="rgb(170,170,170)" class="w-[32px] h-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
@@ -301,7 +382,7 @@
                                     <button class="px-5 py-1 bg-nord14 text-white rounded-xl font-thin hover:bg-nord14 text-sm" on:click={() => addCard('Todolist')}>Todolist</button>
                                     <button class="px-5 py-1 bg-nord8 text-white rounded-xl font-thin hover:bg-nord10 text-sm" on:click={() => addCard('Document')}>Document</button>
                                     <button class="px-5 py-1 bg-nord3 text-white rounded-xl font-thin hover:bg-nord2 text-sm" on:click={() => addCard('Flashcard Set')}>Flashcard Set</button>
-                                    <button class="px-5 py-1 bg-nord11 text-white rounded-xl font-thin hover:bg-nord16 text-sm" on:click={() => addCard('Timer')}>Timer</button>
+                                    <button class="px-5 py-1 bg-nord15 text-white rounded-xl font-thin hover:bg-nord16 text-sm" on:click={() => addCard('Timer')}>Timer</button>
                                     <p class="mb-3 mt-3">Add a new Todolist, Document, Flashcard Set, or Timer</p>
                                     <button class="backdrop-blur-[0px] hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75" on:click={toggleModal}>
                                         Close
@@ -353,11 +434,22 @@
                 <div class="modal-bg" transition:fade={{ delay: 0, duration: 150 }} on:click={toggleSettings}>
                     <div class="modal-content" on:click|stopPropagation>
                         <h2 class="text-xl font-semibold mb-4">Settings</h2>
-                       
-                    
-                        
-                        <button class="backdrop-blur-[0px] hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75" on:click={toggleSettings}>
+                        <ul>
+                            {#each cards as card, index}
+                                <li class="card-item flex justify-between items-center mt-2">
+                                    <span>{card.type}</span>
+                                    <button class="px-5 py-1 bg-nord11 text-white rounded-xl font-thin hover:bg-red-400 text-sm ml-4" on:click={() => deleteCard(card.id)}>Delete</button>
+                                </li>
+                            {/each}
+                        </ul>
+                     
+
+                        <button class="backdrop-blur-[0px] hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75 mt-4" on:click={toggleSettings}>
                             Close
+                        </button>
+
+                        <button out:fade={{ delay: 0, duration: 200 }} class="backdrop-blur-[0px] hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75 mt-4" on:click={logout}>
+                            Logout
                         </button>
                     </div>
                 </div>
