@@ -4,7 +4,7 @@
     import { fade } from 'svelte/transition';
     import { username } from '$lib/store/authStore';
     import CardPage from '$lib/components/CardPage.svelte';
-    import { cardsStore } from '$lib/store/cardsStore';
+    import { cardsStore, saveCardToSupabase } from '$lib/store/cardsStore';
     import { get } from 'svelte/store';
 
     let showSearch = false;
@@ -14,9 +14,21 @@
     let nextCardId = 1;
     let home = false;
     let searchInput;
+    let showSettings = false;
 
     function toggleModal() {
         showModal = !showModal;
+    }
+
+    function toggleSettings() {
+        showSettings = !showSettings;
+    }
+
+    function updateSidebarScroll() {
+        const sidebar = document.querySelector('.sidebar-section');
+        if (sidebar) {
+            sidebar.style.overflowY = showModal ? 'hidden' : 'scroll';
+        }
     }
 
     function toggleHome() {
@@ -27,9 +39,25 @@
         showSearch = !showSearch;
     }
 
-    function addCard(type) {
-        const newCard = { type, id: nextCardId++, content: '' };
-        cardsStore.update(cards => [...cards, newCard]);
+    async function addCard(type) {
+        const user = get(username); // Get the user information
+        const newCard = { type, id: nextCardId++, content: '', user_id: user.id };
+
+        await saveCardToSupabase(newCard);
+
+        cardsStore.update(cards => {
+            const existingCardIndex = cards.findIndex(card => card.type === type);
+            if (existingCardIndex !== -1) {
+                alert("Max amount of particular card reached");
+                cards[existingCardIndex] = newCard;
+                return cards;
+                showModal = false; 
+            } else {
+                // Add the new card
+                return [...cards, newCard];
+            }
+        });
+
         showModal = false; // Close the modal after adding a card
     }
 
@@ -38,7 +66,7 @@
     }
 
     function updateCardContent(id, newContent) {
-        cardsStore.update(cards => 
+        cardsStore.update(cards =>
             cards.map(card => card.id === id ? { ...card, content: newContent } : card)
         );
     }
@@ -49,6 +77,10 @@
         if (cards.length > 0) {
             nextCardId = Math.max(...cards.map(card => card.id)) + 1;
         }
+    });
+
+    $: cardsStore.subscribe(value => {
+        cards = value;
 
         if (showSearch) {
             searchInput.focus();
@@ -94,14 +126,21 @@
         top: 0;
         left: 0;
         box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
-      
+        position: fixed;
+    }
+    .fixed {
+        position: fixed;
+    }
+
+    .auto {
+        overflow-y: auto;
     }
 
     .titlebar-section {
         display: flex;
         backdrop-filter: blur(25px);
         background: rgba(47, 48, 48, 0.5); 
-        z-index: 1;
+        z-index: 10;
         width: calc(100% - 233px); /* Remaining width */
         height: 50px;
         align-items: center;  
@@ -110,7 +149,6 @@
         top: 0;
         right: 0;
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.23);
-    
     }
 
     .titlebar-divider {
@@ -136,36 +174,41 @@
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Bevel effect */
     }
 
+    .modal-hidden {
+        overflow-y: auto;
+        /* Additional styles for the modal when hidden */
+    }
+
     .zindex {
         z-index: 0;
     }
 
     .modal-bg {
-        @apply bg-black fixed inset-0 bg-opacity-20 flex items-center justify-center z-50 backdrop-blur-[5px];
+        @apply bg-gray-900 fixed inset-0 bg-opacity-50 flex items-center justify-center z-50 backdrop-blur-sm;
     }
 
     .modal-content {
-        z-index: 4;
-        @apply bg-customGray bg-opacity-50 p-6 text-gray-200 rounded-lg shadow-xl max-w-md w-full relative backdrop-blur-[30px];
+        z-index: 51;
+        @apply bg-gray-700 bg-opacity-80  p-6 text-gray-200 rounded-lg shadow-xl max-w-md w-full relative backdrop-blur-lg;
     }
 
     .search-content {
-        z-index: 4;
-        @apply bg-customGray2 bg-opacity-80 p-6 rounded-lg shadow-xl max-w-3xl w-full relative backdrop-blur-[30px];
+        z-index: 51;
+        @apply bg-gray-700 bg-opacity-80 p-6 rounded-lg shadow-xl max-w-3xl w-full relative backdrop-blur-lg;
     }
 
     .input-container {
-        z-index: 4;
+        z-index: 51;
         @apply flex items-center w-full;
     }
 
     .input-field {
-        z-index: 4;
+        z-index: 51;
         @apply flex-grow py-2 px-4 border-none rounded bg-transparent text-gray-100 leading-tight focus:outline-none focus:border-gray-400;
     }
 
     .search-icon {
-        z-index: 4;
+        z-index: 51;
         @apply w-5 h-5 bg-transparent border-none cursor-pointer outline-none p-1 h-[27px] w-[27px] ml-2;
     }
 
@@ -182,15 +225,13 @@
 <div class="absolute top-0 h-20 w-full" data-tauri-drag-region></div>
 
 <div class="titlebar-section" data-tauri-drag-region>
-    <button on:click={() => goto('/')} class="ml-2 arrow-button bg-transparent border-none cursor-pointer outline-none p-0 h-7 w-9 transition-all ease-in-out duration-0 hover:bg-customGray hover:rounded-lg text-white focus:outline-none">
+    <button on:click={() => goto('/')} class=" ml-2 arrow-button bg-transparent border-none cursor-pointer outline-none p-0 h-7 w-9 transition-all ease-in-out duration-0 hover:bg-customGray hover:rounded-lg text-white focus:outline-none">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="rgb(170,170,170)" class="w-[32px] h-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
         </svg>
     </button>
     <h1 class="text-white text-center flex-grow mr-[60px]">Dashboard</h1>
 </div>
-
-
 
 <div class="titlebar-divider" data-tauri-drag-region></div>
 
@@ -219,7 +260,7 @@
                 </p>
             </div>
             <div class="flex justify-center items-center">
-            <button class="backdrop-blur-none hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75 mb-10 mt-[-20px]" on:click={() => goto('/')}>
+            <button class=" backdrop-blur-none hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75 mb-10 mt-[-20px]" on:click={() => goto('/')}>
                 Back
             </button>
             </div>
@@ -238,7 +279,7 @@
         </div>
     </template>
     
-    <div class="sidebar-section" data-tauri-drag-region>
+    <div class="sidebar-section" class:fixed={showModal || showSettings} class:auto={!showModal && !showSettings} data-tauri-drag-region>
         <!-- Content for the transparent section -->
         <div data-tauri-drag-region class="flex flex-col items-center mt-12">
             <div class="mb-5">
@@ -256,6 +297,7 @@
                             <div class="modal-bg" transition:fade={{ delay: 0, duration: 150 }} on:click={toggleModal}>
                                 <div class="modal-content" on:click|stopPropagation>
                                     <h2 class="text-xl font-semibold mb-4">New Card</h2>
+                                    
                                     <button class="px-5 py-1 bg-nord14 text-white rounded-xl font-thin hover:bg-nord14 text-sm" on:click={() => addCard('Todolist')}>Todolist</button>
                                     <button class="px-5 py-1 bg-nord8 text-white rounded-xl font-thin hover:bg-nord10 text-sm" on:click={() => addCard('Document')}>Document</button>
                                     <button class="px-5 py-1 bg-nord3 text-white rounded-xl font-thin hover:bg-nord2 text-sm" on:click={() => addCard('Flashcard Set')}>Flashcard Set</button>
@@ -303,9 +345,23 @@
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.3" stroke="rgb(229 231 235)" class="w-5 h-5 mb-0 bg-transparent border-none cursor-pointer outline-none p-1 h-[27px] w-[27px] ml-[0px]">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                         </svg>
-                        <p data-tauri-drag-region class="font-thin text-center mr-[0px] text-gray-200">Settings</p>
+                        <p on:click={toggleSettings} data-tauri-drag-region class="font-thin text-center mr-[0px] text-gray-200">Settings</p>
                     </div>
                 </div>
+
+                {#if showSettings}
+                <div class="modal-bg" transition:fade={{ delay: 0, duration: 150 }} on:click={toggleSettings}>
+                    <div class="modal-content" on:click|stopPropagation>
+                        <h2 class="text-xl font-semibold mb-4">Settings</h2>
+                       
+                    
+                        
+                        <button class="backdrop-blur-[0px] hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75" on:click={toggleSettings}>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            {/if}
     
                 <div style="display: flex; align-items: center;">
                     <div style="display: flex; align-items: center; padding: 4px 8px;" class="ml-[-1px] bg-transparent border-none cursor-pointer outline-none transition-all ease-in-out duration-0 hover:backdrop-brightness-75 hover:rounded-lg text-white focus:outline-none">
@@ -353,16 +409,15 @@
                     
                 </div>
             {/each}
-                </div>
-                
-    
-            <div class="flex justify-center items-center mb-10">
-                <button class=" backdrop-blur-[0px] hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75 zindex" on:click={() => goto('/')}>
-                    Home
-                </button>
-            </div>
-            <div class="flex-grow"></div>
         </div>
+
+        <div class="flex justify-center items-center mb-10">
+            <button class="backdrop-blur-[0px] hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75 zindex" on:click={() => goto('/')}>
+                Home
+            </button>
+        </div>
+        <div class="flex-grow"></div>
     </div>
-    
-    <div class="divider"></div>
+</div>
+
+<div class="divider"></div>
