@@ -64,6 +64,8 @@
 }
 
 
+
+
 async function addCard(type) {
     try {
         isLoading = true;
@@ -151,6 +153,8 @@ async function deleteCard(cardId) {
     $: cardsStore.subscribe(value => {
         cards = value;
     });
+
+    
 </script>
 
 <style>
@@ -347,6 +351,8 @@ async function deleteCard(cardId) {
                     Aenean sed lacus sapien. Suspendisse varius ante ipsum, in efficitur nibh tempor sit amet. Duis odio augue, rutrum ac quam sit amet, ornare sollicitudin elit. Proin tincidunt lectus non pellentesque efficitur. Phasellus sit amet quam lacinia, aliquet odio at, pulvinar velit. Cras pharetra laoreet diam, vel euismod nibh pellentesque ut. Ut dictum, lorem eu sagittis porta, lectus quam bibendum nibh, vel cursus risus arcu non eros.
                 </p>
             </div>
+
+      
             <div class="flex justify-center items-center">
             <button class=" backdrop-blur-none hover:backdrop-brightness-50 text-white font-regular py-2 px-4 rounded backdrop-brightness-75 mb-10 mt-[-20px]" on:click={() => goto('/')}>
                 Back

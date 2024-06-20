@@ -12,6 +12,8 @@ cardsStore.subscribe(cards => {
     localStorage.setItem('cards', JSON.stringify(cards));
 });
 
+
+
 // Function to load cards from Supabase
 export async function loadUserCards(userId) {
     const { data, error } = await supabase
