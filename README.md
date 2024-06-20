@@ -1,5 +1,6 @@
 <p align="center">
-[icon_1024x1024x32](https://github.com/TheBi11iona1re/Study-App/assets/78707011/7f25410b-f865-487e-9f28-e1cc7ba1b13c)
+![icon_1024x1024x32](https://github.com/TheBi11iona1re/Study-App/assets/78707011/7f25410b-f865-487e-9f28-e1cc7ba1b13c)
+
 
 </p>
 
