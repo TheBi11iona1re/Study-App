@@ -9,4 +9,4 @@ Prerequisites
 * Ensure you are on a Mac and have an internet connection
 
 ### Installation Steps
-<iframe src="https://streamable.com/e/tcfkgn" width="560" height="315" frameborder="0" allowfullscreen></iframe>
+<div style="position:relative; width:100%; height:0px; padding-bottom:62.500%"><iframe allow="fullscreen" allowfullscreen height="100%" src="https://streamable.com/e/tcfkgn?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe></div>
