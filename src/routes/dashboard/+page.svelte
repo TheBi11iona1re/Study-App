@@ -270,7 +270,7 @@ async function deleteCard(cardId) {
 
     .modal-content {
         z-index: 51;
-        @apply bg-gray-700 bg-opacity-80  p-6 text-gray-200 rounded-lg shadow-xl max-w-md w-full relative backdrop-blur-lg;
+        @apply bg-gray-700 bg-opacity-60  p-6 text-gray-200 rounded-lg shadow-xl max-w-md w-full relative backdrop-blur-lg;
     }
 
     .search-content {
@@ -399,33 +399,7 @@ async function deleteCard(cardId) {
                     </div>
                 </div>
     
-                <div style="display: flex; align-items: center;">
-                    <div style="display: flex; align-items: center; padding: 4px 8px;" class="ml-[-1px] bg-transparent border-none cursor-pointer outline-none transition-all ease-in-out duration-0 hover:backdrop-brightness-75 hover:rounded-lg text-white focus:outline-none" on:click={toggleSearch}>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.3" stroke="white" class="w-5 h-5 mb-0 bg-transparent border-none cursor-pointer outline-none p-1 h-[27px] w-[27px] ml-[0px]">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                        </svg>
-                        <p data-tauri-drag-region class="font-thin text-center mr-[0px] text-gray-200">Search</p>
-    
-                        {#if showSearch}
-                            <div class="modal-bg" transition:fade={{ delay: 0, duration: 150 }} on:click={toggleSearch} on:click|stopPropagation>
-                                <div class="search-content" on:click|stopPropagation>
-                                    <div class="input-container">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.3" stroke="rgb(229 231 235)" class="search-icon">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                                        </svg>
-                                        <input 
-                                            type="text"
-                                            placeholder="Search..."
-                                            required 
-                                            class="input-field ml-1"
-                                            bind:this={searchInput}
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                        {/if}
-                    </div>
-                </div>
+                
     
                 <div style="display: flex; align-items: center;">
                     <div style="display: flex; align-items: center; padding: 4px 8px;" class="ml-[-1px] bg-transparent border-none cursor-pointer outline-none transition-all ease-in-out duration-0 hover:backdrop-brightness-75 hover:rounded-lg text-white focus:outline-none">
@@ -461,14 +435,7 @@ async function deleteCard(cardId) {
                 </div>
             {/if}
     
-                <div style="display: flex; align-items: center;">
-                    <div style="display: flex; align-items: center; padding: 4px 8px;" class="ml-[-1px] bg-transparent border-none cursor-pointer outline-none transition-all ease-in-out duration-0 hover:backdrop-brightness-75 hover:rounded-lg text-white focus:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.3" stroke="rgb(229 231 235)" class="w-5 h-5 mb-0 bg-transparent border-none cursor-pointer outline-none p-1 h-[27px] w-[27px] ml-[0px]">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 1 1-5.714 0M3.124 7.5A8.969 8.969 0 0 1 5.292 3m13.416 0a8.969 8.969 0 0 1 2.168 4.5" />
-                        </svg>
-                        <p data-tauri-drag-region class="text-center mr-[0px] font-thin text-gray-200">Notifications</p>
-                    </div>
-                </div>
+             
 
                 <p data-tauri-drag-region class="text-center mt-5 text-sm font-thin text-gray-300 mb-5">{$username}'s Cards</p>
                 {#each cards as card (card.id)}
