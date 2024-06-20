@@ -36,11 +36,16 @@
           </span>
           <p><span style="color: #898989">Write something, or press '/' for AI, to see the magic happen. 🎩✨</span></p>
         </span>
+
+        
       `,
       onTransaction: () => {
         saveContent();
       },
+
+      
     });
+    editor.commands.focus('12');
   });
 
   onDestroy(() => {
@@ -213,10 +218,10 @@
         Redo
       </button>
       <button
-        on:click={() => editor.chain().focus().setColor('#958DF1').run()}
-        class={editor.isActive('textStyle', { color: '#958DF1' }) ? 'is-active' : ''}
+        on:click={() => editor.chain().focus().setColor('#FFFFFF').run()}
+        class={editor.isActive('textStyle', { color: '#FFFFFF' }) ? 'is-active' : ''}
       >
-        Purple
+        White
       </button>
       
     </div>
