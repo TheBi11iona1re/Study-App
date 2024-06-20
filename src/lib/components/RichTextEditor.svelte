@@ -17,6 +17,17 @@
   const LOCAL_STORAGE_KEY = 'tiptap-content';
 
   onMount(async () => {
+    const session = get(auth);
+
+    if (session) {
+      // Clear local storage if a new session is detected
+      const storedUserId = localStorage.getItem('current-user-id');
+      if (storedUserId !== session.user.id) {
+        localStorage.removeItem(LOCAL_STORAGE_KEY);
+        localStorage.setItem('current-user-id', session.user.id);
+      }
+    }
+
     const content = await loadContent();
     editor = new Editor({
       element: element,
@@ -36,24 +47,18 @@
           </span>
           <p><span style="color: #898989">Write something, or press '/' for AI, to see the magic happen. 🎩✨</span></p>
         </span>
-
-        
       `,
       onTransaction: () => {
         saveContent();
       },
-
-      
     });
-    editor.commands.focus('12');
   });
 
   onDestroy(() => {
     if (editor) {
       editor.destroy();
-      localStorage.removeItem(LOCAL_STORAGE_KEY);
+      
     }
-
   });
 
   async function loadContent() {

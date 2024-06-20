@@ -75,8 +75,8 @@
 
   
     onDestroy(() => {
-        window.removeEventListener('beforeunload', handleBeforeUnload);
-        localStorage.removeItem('user-content');
+       
+      
     });
     
     async function saveTodos() {
