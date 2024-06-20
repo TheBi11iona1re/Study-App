@@ -223,11 +223,17 @@ async function deleteCard(cardId) {
     .loading-bar {
     position: absolute;
     top: 0;
-    left: 0px; /* Adjust this to the width of your sidebar */
+    left: 0; /* Adjust this to the width of your sidebar */
     height: 2px;
     background-color: rgba(216, 222, 226, 0.9);
-    width: 0; /* Start with 0 width */
-    transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0%; /* Start with 0 width */
+    animation: expandWidth 5s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+}
+
+@keyframes expandWidth {
+    to {
+        width: 100%;
+    }
 }
 
 .loading-bar.finish {
