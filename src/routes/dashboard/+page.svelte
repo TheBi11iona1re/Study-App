@@ -17,7 +17,7 @@
     let home = false;
     let searchInput;
     let showSettings = false;
-
+// Import necessary Svelte functions and components
     
     function toggleModal() {
         showModal = !showModal;
@@ -47,7 +47,17 @@
     }
    
 
+// Define reactive variables for UI state and data
 
+// Function to toggle the display of the modal
+
+// Function to toggle the display of the settings
+
+// Function to update sidebar scroll behavior based on modal visibility
+
+// Function to toggle the home state
+
+// Function to toggle the search input display
 
     async function logout() {
     try {
@@ -64,7 +74,17 @@
 }
 
 
+// Async function to handle user logout
 
+// Async function to add a new card and save it to Supabase
+
+// Async function to delete a card and remove it from Supabase
+
+// Subscribe to changes in the cardsStore and update the cards array
+
+// Function to select a card for viewing/editing
+
+// Function to update the content of a card
 
 async function addCard(type) {
     try {
@@ -95,7 +115,13 @@ async function addCard(type) {
     }
 }
 
+// Lifecycle function to load user cards on component mount
 
+// Ensure search input is focused when showSearch is true
+
+// Subscribe to cardsStore changes and update the cards array
+
+// Global styles for the component
 
 async function deleteCard(cardId) {
     try {

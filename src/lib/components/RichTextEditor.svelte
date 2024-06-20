@@ -16,10 +16,20 @@
   import { createOpenAI } from '@ai-sdk/openai';
   let isLoading = false;
   let error = false;
-
+// Importing styles and necessary modules for Tiptap editor and AI integration
 
   import { StreamingTextResponse, streamText } from 'ai';
+  / Initializing loading and error states
 
+// Importing AI streaming text response utilities
+
+// Declaring variables for DOM elements, editor instance, and content management
+
+// Function to handle keydown events, focusing input box on '/' key press
+
+// Define local storage key for editor content
+
+// Variable to store AI-generated text
 
   let element: HTMLDivElement;
   let editor: Editor | undefined;
@@ -37,6 +47,16 @@
       }
     }
   }
+
+// Variable to store flashcards
+
+// Initialize OpenAI with API key
+
+// Function to insert AI-generated text into the editor
+
+// Lifecycle function to set up the editor on mount
+
+// Function to load content from Supabase or local storage
 
   const LOCAL_STORAGE_KEY = 'tiptap-content';
   let aiText = ''; // To store the AI-generated text
@@ -174,6 +194,18 @@
       aiText += textPart; // Store the text
     }
   }
+
+  // Lifecycle function to clean up on component destroy
+
+// Function to save editor content to local storage and Supabase
+
+// Function to generate text using AI and update the editor
+
+// Function to generate flashcards using AI
+
+// Function to save flashcards to Supabase and local storage
+
+// Function to delete a flashcard
 
   async function generateFlashcard(event) {
   event.preventDefault();

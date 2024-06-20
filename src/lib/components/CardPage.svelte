@@ -9,7 +9,7 @@
     import Flashcard from './Flashcard.svelte';
     import aifront from './RichTextEditor.svelte'
      import aiback from './RichTextEditor.svelte'
-
+// Import necessary modules and components
     export let type: string;
     export let content: string;
     export let onSave: (newContent: string) => void;
@@ -72,6 +72,35 @@
         timerSettings = editableContent.timerSettings || { timer: 25 * 60, breakTime: 5 * 60, customMinutes: 25 };
     }
 
+    // Export props
+
+// Initialize editable content
+
+// Initialize individual content elements
+
+// Reactive assignment of individual content elements from editableContent
+
+// Lifecycle function to load user content on mount and start auto-save
+
+// Lifecycle function to stop auto-save on component destroy
+
+// Function to load user content from Supabase or local storage
+
+// Function to save all content to Supabase and local storage
+
+// Function to save document content and then call saveContent
+
+// Function to save todo list and then call saveContent
+
+// Function to save flashcards to Supabase and local storage
+
+// Function to save timer settings and then call saveContent
+
+// Function to handle actions before the window unloads
+
+// Auto-save functionality
+
+
     async function saveContent() {
         const session = get(auth);
         if (session) {
@@ -123,6 +152,13 @@
     }
 
     // Auto-save functionality
+    // Function to start auto-save at regular intervals and add unload event listener
+
+// Function to stop auto-save and remove unload event listener
+
+// Todo list related functions
+
+// Function to add a new todo item
     let autoSaveInterval;
 
     function startAutoSave() {
@@ -157,6 +193,22 @@
     }
 
     // Flashcard set related functions
+    / Function to toggle the completion status of a todo item
+
+// Function to delete a todo item
+
+// Flashcard set related functions
+
+// Function to shuffle an array (used for flashcards)
+
+// Function to shuffle flashcards array
+
+// Function to add a new flashcard
+
+// Function to delete a flashcard
+
+// Timer related functions
+
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -188,6 +240,21 @@ async function deleteFlashcard(index) {
 
 
     // Timer related functions
+    / Function to start the timer
+
+// Function to stop the timer
+
+// Function to reset the timer
+
+// Function to set the timer to a specific duration
+
+// Function to set the break time duration
+
+// Function to format time in minutes and seconds
+
+// Function to send a break notification if permission is granted
+
+// Page content container with conditional rendering based on type (Todo list, Document, Flashcard Set, Timer)
     let timer = timerSettings.timer;
     let breakTime = timerSettings.breakTime;
     let customMinutes = timerSettings.customMinutes;
