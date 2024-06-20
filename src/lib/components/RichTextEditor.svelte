@@ -19,7 +19,7 @@
 // Importing styles and necessary modules for Tiptap editor and AI integration
 
   import { StreamingTextResponse, streamText } from 'ai';
-  / Initializing loading and error states
+  // Initializing loading and error states
 
 // Importing AI streaming text response utilities
 

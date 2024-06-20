@@ -86,15 +86,6 @@ body {
   <div class="flex flex-col items-center h-screen mr-2">
    
 
-<!-- Set background to transparent for html and body elements -->
-
-<!-- Import the goto function for navigation -->
-
-<!-- Prevent scrolling on the body -->
-
-<!-- Define the rainbow effect for text animation -->
-
-<!-- Define keyframes for the rainbow text animation -->
 
    
     <div class="flex-grow"></div>
@@ -128,22 +119,7 @@ body {
         <p class="text-white">Create and use flashcards powered by Artificial intelligence to enhance your fast learning experience.</p>
       </div>
     
-     <!-- Define a glowing border effect -->
-
-<!-- Container for the logo and title -->
-
-<!-- Center content vertically and horizontally -->
-
-<!-- Placeholder for additional content -->
-
-<!-- Large text with rainbow effect for 'Write, Generate, Review' -->
-
-<!-- Spacer for additional layout control -->
-
-<!-- Button to navigate to the dashboard -->
-
-<!-- Section showcasing features with backdrop effects -->
-
+     
       <div class="backdrop-brightness-75 backdrop-filter backdrop-blur-sm rounded-lg p-4 shadow-lg ">
         <div style="display: flex; align-items: center;">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="w-6 h-6">
@@ -152,11 +128,7 @@ body {
           
   <h2 class="text-white text-lg font-bold" style="margin-left: 6px;">Visualise, Filter & Sort Any Way You Want</h2>
 </div>
-<!-- Card for AI Built Flashcards feature -->
 
-<!-- Card for Visualise, Filter & Sort feature -->
-
-<!-- Placeholder for additional content -->
       
         
         <p class="text-white">Customise your viewing options to better organise your content, making it easier to access and study.</p>

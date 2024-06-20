@@ -193,7 +193,7 @@
     }
 
     // Flashcard set related functions
-    / Function to toggle the completion status of a todo item
+    // Function to toggle the completion status of a todo item
 
 // Function to delete a todo item
 
@@ -240,7 +240,7 @@ async function deleteFlashcard(index) {
 
 
     // Timer related functions
-    / Function to start the timer
+    // Function to start the timer
 
 // Function to stop the timer
 
