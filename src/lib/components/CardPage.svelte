@@ -2,7 +2,7 @@
     import { cardsStore, saveCardToSupabase, loadUserCards } from '$lib/store/cardsStore';
     import { auth } from '$lib/store/authStore';
     import { get } from 'svelte/store';
-    import { onMount } from 'svelte';
+    import { onMount, onDestroy } from 'svelte';
     import Tiptap from '$lib/components/RichTextEditor.svelte';
 
     export let type: string;
@@ -73,6 +73,12 @@
         await saveContent();
     }
 
+  
+    onDestroy(() => {
+        window.removeEventListener('beforeunload', handleBeforeUnload);
+        localStorage.removeItem('user-content');
+    });
+    
     async function saveTodos() {
         editableContent.todos = todos;
         await saveContent();
