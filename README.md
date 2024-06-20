@@ -9,4 +9,4 @@ Prerequisites
 * Ensure you are on a Mac and have an internet connection
 
 ### Installation Steps
-<iframe allow="fullscreen" allowfullscreen height="720" src="https://streamable.com/e/tcfkgn?" width="1152" style="border:none;"></iframe>
+https://streamable.com/tcfkgn
