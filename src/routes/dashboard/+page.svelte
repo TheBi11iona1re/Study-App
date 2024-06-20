@@ -222,7 +222,7 @@ async function deleteCard(cardId) {
 
     .loading-bar {
     position: absolute;
-    top: 0;
+    top: 48px;
     left: 0; /* Adjust this to the width of your sidebar */
     height: 2px;
     background-color: rgba(216, 222, 226, 0.9);
@@ -237,6 +237,7 @@ async function deleteCard(cardId) {
 }
 
 .loading-bar.finish {
+    top: 48px;
     width: 100%;
     transition: width 0.1s ease-out; /* Fast finish transition */
 }

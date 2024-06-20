@@ -1,4 +1,7 @@
 // Imports required by Tauri and the window_vibrancy crate
+
+
+
 #![cfg_attr(
   all(not(debug_assertions), target_os = "windows"),
   windows_subsystem = "windows"
@@ -16,6 +19,7 @@ fn apply_sidebar_blur(window: tauri::Window) {
     
     }
 }
+
 
 
 
