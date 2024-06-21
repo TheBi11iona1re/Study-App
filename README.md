@@ -24,6 +24,7 @@ https://youtu.be/1GzqFLXkSI8
 
 1. **Download and Install**:
    - Follow the provided instructions for your operating system to install the application.
+   - - only works on arm macs
    - https://streamable.com/tcfkgn
 
 ### Running the Application
