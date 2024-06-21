@@ -62,7 +62,7 @@ Upon successful login, you will be directed to the Dashboard. Here, you can:
 
 ### AI Integration
 
-1. **Generate Flashcards**: Use the AI feature to automatically create flashcards based on your study notes.
+1. **Generate Flashcards**: Use the AI feature to automatically create flashcards based on your study notes. (HOWEVER GENERATING FLASHCARDS OVERWRITES THE DOCUMENT)
 2. **Generate Study Content**: Enter a prompt and let the AI generate relevant study material.
 
 ### Logging Out
