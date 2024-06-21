@@ -1,7 +1,7 @@
 # Flashify.ai - README
 
 ## Overview
-![icon_256x256x32](https://github.com/TheBi11iona1re/Study-App/assets/78707011/7f25410b-f865-487e-9f28-e1cc7ba1b13c)
+![icon_256x256x15](https://github.com/TheBi11iona1re/Study-App/assets/78707011/7f25410b-f865-487e-9f28-e1cc7ba1b13c)
 *By Aditya Mukherjee*
 
 Welcome to Flashify.ai, your ultimate study companion! Flashify.ai is a powerful, user-friendly application designed to help students organise their study materials, take effective breaks with the Pomodoro timer, and generate flashcards and notes using AI. This guide will help you get started and make the most out of Flashify.ai.
