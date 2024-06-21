@@ -16,7 +16,7 @@ Welcome to Flashify.ai, your ultimate study companion! Flashify.ai is a powerful
 - **Pomodoro Timer**: Improve productivity with structured study and break intervals.
 
 ## Showcase
-
+https://youtu.be/1GzqFLXkSI8 
 
 
 ### Installation
