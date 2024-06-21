@@ -15,7 +15,9 @@ Welcome to Flashify.ai, your ultimate study companion! Flashify.ai is a powerful
 - **AI Integration**: Generate study content and flashcards using AI.
 - **Pomodoro Timer**: Improve productivity with structured study and break intervals.
 
-## Getting Started
+## Showcase
+
+
 
 ### Installation
 
