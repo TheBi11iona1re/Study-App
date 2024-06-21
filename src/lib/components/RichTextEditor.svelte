@@ -454,7 +454,7 @@
       Loading...
     {/if}
     {#if !isLoading}
-      Generate AI Flashcard
+      WIP Generate AI Flashcard
     {/if}
     {#if error}
     Error Parsing Flashcard
